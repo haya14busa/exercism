@@ -38,6 +38,10 @@ maketrans(...)
 '''
 
 class DNA(object):
+    # Translation table(constant)
+    DNA_TO_RNA_TABLE = string.maketrans('GCTA',
+                                        'CGAU')
+
     def __init__(self, dna_strand):
         """
         :param dna_strand:
@@ -50,10 +54,6 @@ class DNA(object):
         # TODO: confirm given dna strand is the sequence of A,C,G,T
         self.dna = dna_strand
 
-        # Translation table(constant)
-        self.DNA_TO_RNA_TABLE = string.maketrans('GCTA',
-                                                 'CGAU')
-
     def to_rna(self):
         """to_rna
             DNA -> RNA
@@ -62,4 +62,4 @@ class DNA(object):
             `T` -> `A`
             `A` -> `U`
         """
-        return self.dna.translate(self.DNA_TO_RNA_TABLE)
+        return self.dna.translate(DNA.DNA_TO_RNA_TABLE)
