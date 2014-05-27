@@ -29,8 +29,13 @@ class Matrix(object):
     def __init__(self, matrix_string):
         self.rows = [[int(x) for x in row.strip().split(' ')]
                      for row in matrix_string.split('\n')]
-        self.columns = [ [row[i] for row in self.rows]
-                         for i in range(len(self.rows) - 1)]
+        self.columns = [list(x) for x in zip(*self.rows)]
+        '''
+        func(*args)
+        ===========
+         self.rows -> [ [x y z] [x y z] [x y z] ]
+        *self.rows ->   [x y z] [x y z] [x y z]
+        '''
 
 def main():
     m = Matrix('1 2 3\n4 5 6\n7 8 9\n 8 7 6')
