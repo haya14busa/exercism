@@ -27,12 +27,9 @@
 
 class Matrix(object):
     def __init__(self, matrix_string):
-        rows_string = map((lambda x: x.strip().split(' ')),
-                      matrix_string.split('\n'))
-        self.rows = []
-        for row_str in rows_string:
-            self.rows.append(map(int,row_str))
-        self.columns = [ [row[i] for row in self.rows if not row[i] == '']
+        self.rows = [[int(x) for x in row.strip().split(' ')]
+                     for row in matrix_string.split('\n')]
+        self.columns = [ [row[i] for row in self.rows]
                          for i in range(len(self.rows) - 1)]
 
 def main():
