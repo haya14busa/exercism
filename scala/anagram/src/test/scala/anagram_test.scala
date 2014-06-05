@@ -30,7 +30,6 @@ class AnagramSpecs extends FlatSpec with Matchers {
 
   it should "not include identical words" in {
     // pending
-    // XXX:
     val detector = new Anagram("corn")
     val anagrams = detector.matches(Seq(
       "corn", "dark", "Corn", "rank", "CORN", "cron", "park"
