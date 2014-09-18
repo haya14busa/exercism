@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 class Robot {
   private val usednames = scala.collection.mutable.ListBuffer.empty[String]
 
@@ -7,6 +9,7 @@ class Robot {
   }
   var name = generateName()
 
+  @tailrec
   private def generateName(): String = {
     val r = new scala.util.Random
     val prefix = r.shuffle(('A' to 'X').toList).take(2).mkString
@@ -15,7 +18,7 @@ class Robot {
     if (this.usednames contains newName)
       this.generateName()
     else {
-      usednames += newName
+      this.usednames += newName
       newName
     }
   }
