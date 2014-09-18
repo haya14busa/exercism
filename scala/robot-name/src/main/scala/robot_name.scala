@@ -12,7 +12,7 @@ class Robot {
     val prefix = r.shuffle(('A' to 'X').toList).take(2).mkString
     val digits = r.shuffle((0 to 9).toList).take(3).mkString
     val newName = prefix + digits
-    if (this.oldNames.find(_ == newName).isDefined)
+    if (this.oldNames contains newName)
       this.generateName()
     else {
       oldNames += newName
