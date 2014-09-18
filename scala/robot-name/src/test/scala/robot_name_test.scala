@@ -28,4 +28,17 @@ class RobotNameSpecs extends FunSpec with Matchers {
     name should not equal (name2)
     name2 should fullyMatch regex (nameRegex)
   }
+
+  it ("never use same name twice") {
+    // pending
+    val oldNames = scala.collection.mutable.ListBuffer.empty[String]
+    val robot = new Robot
+
+    (1 to 100) foreach { i =>
+      robot.reset()
+      oldNames += robot.name
+    }
+
+    oldNames should equal (oldNames.distinct)
+  }
 }
